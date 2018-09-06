@@ -41,7 +41,8 @@ namespace InheritanceApp.Characters.Class
                 Console.WriteLine(enemy.GetName() + " is now poisoned.");
                 poison = true;
             }
-            else if (poison)
+
+            if (poison)
             {
                 Console.WriteLine(enemy.GetName() + " takes 2 damage from poison.");
                 enemy.TakeDamage(2);
