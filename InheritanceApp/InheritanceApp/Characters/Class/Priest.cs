@@ -41,10 +41,10 @@ namespace InheritanceApp.Characters.Class
         /// Deals damage to an enemy with a magic attack. Has a 60% chance to heal himself by 1 each turn.
         /// </summary>
         /// <param name="enemy">Enemy to hit.</param>
-        /// <returns>Damage dealt (between 1 and 3, doubled if attacking an undead).</returns>
+        /// <returns>Damage dealt (between 1 and 4, doubled if attacking an undead).</returns>
         public int Attack(ICharacter enemy)
         {
-            int damage = rng.Next(1, 4);
+            int damage = rng.Next(1, 5);
             if(enemy.isUndead())
             {
                 damage *= 2;
@@ -52,7 +52,7 @@ namespace InheritanceApp.Characters.Class
             if (hp < 7 && rng.Next(1, 11) > 4)
             {
                 hp += 1;
-                Console.Write(name + " healed 1 HP.");
+                Console.WriteLine(name + " healed 1 HP.");
             }
             Console.WriteLine(name + " deals " + damage + " damage to " + enemy.GetName() + ".");
             enemy.TakeDamage(damage);
@@ -75,7 +75,6 @@ namespace InheritanceApp.Characters.Class
         public void TakeDamage(int damage)
         {
             hp -= damage;
-            Console.WriteLine(name + " takes " + damage + " damage!");
         }
 
         /// <summary>

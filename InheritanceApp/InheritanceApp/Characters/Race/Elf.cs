@@ -68,7 +68,6 @@ namespace InheritanceApp.Characters.Race
             if(rng.Next(1, 11) > 3)
             {
                 hp -= damage;
-                Console.WriteLine(name + " takes " + damage + " damage!");
             }
             else
             {

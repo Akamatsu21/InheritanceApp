@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Characters\Class\LivingWarrior.cs" />
     <Compile Include="Characters\Class\Priest.cs" />
+    <Compile Include="Characters\Class\UndeadWarrior.cs" />
     <Compile Include="Characters\Class\Warrior.cs" />
     <Compile Include="Characters\ICharacter.cs" />
     <Compile Include="Characters\Race\Elf.cs" />

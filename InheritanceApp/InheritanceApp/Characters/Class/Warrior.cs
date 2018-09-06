@@ -7,24 +7,24 @@ using System.Threading.Tasks;
 namespace InheritanceApp.Characters.Class
 {
     /// <summary>
-    /// The most beefy character, which gets stronger when low on health.
+    /// The most beefy character, has different abilities depending on wether it's undead or not.
     /// </summary>
-    class Warrior : ICharacter
+    abstract class Warrior : ICharacter
     {
         /// <summary>
         /// Health Points of the Warrior.
         /// </summary>
-        int hp;
+        protected int hp;
 
         /// <summary>
         /// Utility Random Number Generator.
         /// </summary>
-        Random rng;
+        protected Random rng;
 
         /// <summary>
         /// Warrior's name.
         /// </summary>
-        string name;
+        protected string name;
 
         /// <summary>
         /// Boolean value which determines if this is a living Warrior or an undead Warrior.
@@ -35,31 +35,21 @@ namespace InheritanceApp.Characters.Class
         /// Public constructor that initialises attributes.
         /// </summary>
         /// <param name="full_name">This Warrior's given name.</param>
-        /// <param name="dead">True if the Warriro's undead.</param>
+        /// <param name="dead">True if the Warrior's undead.</param>
         public Warrior(string full_name, bool dead = false)
         {
-            hp = 9;
+            hp = 10;
             rng = new Random();
             name = full_name;
             undead = dead;
         }
 
         /// <summary>
-        /// Deals damage to an enemy with a sword attack. Has a 30% chance for a critical hit when low on health.
+        /// Abstract function that contains the Warrior's sword attack. Implementation varies between types of Warriors.
         /// </summary>
         /// <param name="enemy">Enemy to hit.</param>
         /// <returns>Damage dealt (between 1 and 3).</returns>
-        public int Attack(ICharacter enemy)
-        {
-            int damage = rng.Next(1, 4);
-            if(hp < 4 && rng.Next(1, 11) > 7)
-            {
-                damage = 10;
-            }
-            Console.WriteLine(name + " deals " + damage + " damage to " + enemy.GetName() + ".");
-            enemy.TakeDamage(damage);
-            return damage;
-        }
+        abstract public int Attack(ICharacter enemy);
 
         /// <summary>
         /// Checks if the Warrior is undead.
@@ -77,7 +67,6 @@ namespace InheritanceApp.Characters.Class
         public void TakeDamage(int damage)
         {
             hp -= damage;
-            Console.WriteLine(name + " takes " + damage + " damage!");
         }
 
         /// <summary>

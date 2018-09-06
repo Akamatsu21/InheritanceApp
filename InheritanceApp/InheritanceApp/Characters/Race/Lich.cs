@@ -66,7 +66,6 @@ namespace InheritanceApp.Characters.Race
         public void TakeDamage(int damage)
         {
             hp -= damage;
-            Console.WriteLine(name + " takes " + damage + " damage!");
             if (hp <= 0 && rng.Next(1, 11) >= 6)
             {
                 hp = 5;

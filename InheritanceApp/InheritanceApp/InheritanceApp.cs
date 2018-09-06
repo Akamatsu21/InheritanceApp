@@ -26,7 +26,7 @@ namespace InheritanceApp
             bool undead = false;
             if (number == "4")
             {
-                Console.Write("Do you want the Warrior to be undead? ");
+                Console.Write("Do you want " + name + " to be undead? ");
                 string u = Console.ReadLine();
                 if (u == "y" || u == "yes")
                 {
@@ -47,7 +47,10 @@ namespace InheritanceApp
                     character = new Priest(name);
                     break;
                 case "4":
-                    character = new Warrior(name, undead);
+                    if (undead)
+                        character = new UndeadWarrior(name);
+                    else
+                        character = new LivingWarrior(name);
                     break;
                 default:
                     Console.WriteLine("Wrong value!");
@@ -79,7 +82,10 @@ namespace InheritanceApp
             bool turn = true;
             while(!game_over)
             {
-                if(turn)
+                Console.WriteLine();
+                Console.WriteLine();
+
+                if (turn)
                 {
                     fighter1.Attack(fighter2);
                 }
@@ -100,8 +106,6 @@ namespace InheritanceApp
                 }
                 else
                 {
-                    Console.WriteLine();
-                    Console.WriteLine();
                     Thread.Sleep(3000);
                 }
             }
